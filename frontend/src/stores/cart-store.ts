@@ -28,9 +28,7 @@ export const DISCOUNT_THRESHOLD = 150;
 export const DISCOUNT_RATE = 0.1; // 10% off when subtotal >= threshold
 
 function computeDiscount(subtotal: number) {
-  return subtotal >= DISCOUNT_THRESHOLD
-    ? Math.round(subtotal * DISCOUNT_RATE * 100) / 100
-    : 0;
+  return subtotal >= DISCOUNT_THRESHOLD ? Math.round(subtotal * DISCOUNT_RATE * 100) / 100 : 0;
 }
 
 function computeShipping(subtotal: number) {
@@ -114,9 +112,7 @@ export const useCartStore = create<CartState>()(
             message: `Only ${item.stock} units available.`,
           };
         }
-        const items = get().items.map((i) =>
-          i.productId === productId ? { ...i, quantity } : i,
-        );
+        const items = get().items.map((i) => (i.productId === productId ? { ...i, quantity } : i));
         const sub = items.reduce((s, i) => s + i.price * i.quantity, 0);
         set({
           items,

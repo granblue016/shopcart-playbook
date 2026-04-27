@@ -13,9 +13,7 @@ interface Props {
 
 export function ProductCard({ product }: Props) {
   const addItem = useCartStore((s) => s.addItem);
-  const itemInCart = useCartStore((s) =>
-    s.items.find((i) => i.productId === product.id),
-  );
+  const itemInCart = useCartStore((s) => s.items.find((i) => i.productId === product.id));
   const [error, setError] = useState<string | null>(null);
 
   const outOfStock = product.stock === 0;
@@ -63,16 +61,11 @@ export function ProductCard({ product }: Props) {
           </div>
         </div>
 
-        <p className="line-clamp-2 text-sm text-muted-foreground">
-          {product.description}
-        </p>
+        <p className="line-clamp-2 text-sm text-muted-foreground">{product.description}</p>
 
         <div className="mt-auto space-y-3">
           <div className="flex items-center justify-between">
-            <span
-              className="text-xl font-bold tracking-tight"
-              data-testid="product-price"
-            >
+            <span className="text-xl font-bold tracking-tight" data-testid="product-price">
               {formatCurrency(product.price)}
             </span>
             {outOfStock ? (

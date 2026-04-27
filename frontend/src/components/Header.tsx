@@ -67,12 +67,7 @@ export function Header() {
                   {user.name}
                 </span>
               </div>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={handleLogout}
-                data-testid="logout-btn"
-              >
+              <Button variant="ghost" size="sm" onClick={handleLogout} data-testid="logout-btn">
                 <LogOut className="h-4 w-4" />
               </Button>
             </div>
